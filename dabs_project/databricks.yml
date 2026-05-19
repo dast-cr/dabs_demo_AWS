@@ -39,5 +39,5 @@ targets:
       schema: prod
     permissions:
       - user_name: stuart.libby@databricks.com
-        service_principal_name: 518da0f8-3818-419b-8793-c6c22f564a43
+        service_principal_name: 73529182-20d0-493e-8756-af723ba9b153
         level: CAN_MANAGE
