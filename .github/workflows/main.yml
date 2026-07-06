@@ -20,13 +20,8 @@ jobs:
                                                                             
       # Checkout code, setup databricks CLI and then, deploy the bundle using DABs                                      
       steps:                                                                                                            
-        - uses: actions/checkout@v3                                                                                     
-        - uses: databricks/setup-cli@main                                                                               
-                                                                                                                        
-        - name: Deploy bundle
-          run: |
-            cd dabs_project
-            databricks bundle deploy -t prod
+        - uses: actions/checkout@v3
+        - uses: databricks/setup-cli@main
 
         - name: Set up Python
           uses: actions/setup-python@v5
@@ -45,3 +40,8 @@ jobs:
             for whl in dist/*.whl; do
               databricks fs cp "$whl" "dbfs:/Volumes/prod/default/packages/$(basename "$whl")" --overwrite
             done
+
+        - name: Deploy bundle
+          run: |
+            cd dabs_project
+            databricks bundle deploy -t prod
