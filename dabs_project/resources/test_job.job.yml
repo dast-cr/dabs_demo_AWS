@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    test_job:
+      name: test job
+      tasks:
+        - task_key: hello_world
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/test_job/Hello_world.ipynb
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+      email_notifications:
+        no_alert_for_skipped_runs: false
+      max_concurrent_runs: 1
+      performance_target: PERFORMANCE_OPTIMIZED
+      queue:
+        enabled: true
+      timeout_seconds: 0
+      webhook_notifications: {}
