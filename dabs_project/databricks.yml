@@ -25,14 +25,14 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://adb-7405613676539969.9.azuredatabricks.net/
+      host: https://dbc-ec947490-9d82.cloud.databricks.com/
     variables:
       catalog: main
       schema: ${workspace.current_user.short_name}
   prod:
     mode: production
     workspace:
-      host: https://adb-7405613676539969.9.azuredatabricks.net/
+      host: https://dbc-ec947490-9d82.cloud.databricks.com/
       # We explicitly deploy to /Workspace/Users/stuart.libby@databricks.com to make sure we only have a single copy.
       root_path: /Workspace/Shared/project/.bundle/${bundle.name}/${bundle.target}
     variables:
