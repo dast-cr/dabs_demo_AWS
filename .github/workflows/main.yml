@@ -12,7 +12,7 @@ jobs:
                                                                                                                         
       environment: prod_env                                                                                             
       env:                                                                                                              
-        #DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}                                                                   
+        DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
         DATABRICKS_CLIENT_ID: ${{secrets.DATABRICKS_CLIENT_ID}}                                                         
         DATABRICKS_CLIENT_SECRET: ${{secrets.DATABRICKS_CLIENT_SECRET}}                                                 
         BUNDLE_VAR_catalog: ${{vars.CATALOG}}                                                                           
@@ -23,6 +23,25 @@ jobs:
         - uses: actions/checkout@v3                                                                                     
         - uses: databricks/setup-cli@main                                                                               
                                                                                                                         
-        -   run: |                                                                                                      
-              cd dabs_project                                                                                            
-              databricks bundle deploy -t prod  
+        - name: Deploy bundle
+          run: |
+            cd dabs_project
+            databricks bundle deploy -t prod
+
+        - name: Set up Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: "3.11"
+
+        - name: Build wheel
+          run: |
+            cd dabs_project
+            pip install build
+            python -m build --wheel
+
+        - name: Upload wheel to Databricks volume
+          run: |
+            cd dabs_project
+            for whl in dist/*.whl; do
+              databricks fs cp "$whl" "dbfs:/Volumes/prod/default/packages/$(basename "$whl")" --overwrite
+            done

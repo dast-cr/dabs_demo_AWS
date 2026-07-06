@@ -21,6 +21,9 @@ dev = [
 [project.scripts]
 main = "dabs_project.main:main"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/dabs_project"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
