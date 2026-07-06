@@ -1,0 +1,4 @@
+# Require admin approval for any change to the permissions file.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+dabs_project/permissions.yml @stuartlibby
