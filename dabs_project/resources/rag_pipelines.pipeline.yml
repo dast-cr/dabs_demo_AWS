@@ -5,7 +5,7 @@ resources:
       libraries:
         - glob:
             include: ../src/rag_pipelines/transformations/**
-      catalog: classic_stable_aiy0te
+      catalog: ${var.catalog}
       channel: CURRENT
       continuous: false
       photon: true
