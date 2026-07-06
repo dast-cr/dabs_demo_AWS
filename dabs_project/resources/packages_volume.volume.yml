@@ -1,7 +1,0 @@
-resources:
-  volumes:
-    packages_volume:
-      catalog_name: prod
-      schema_name: default
-      name: packages
-      volume_type: MANAGED
