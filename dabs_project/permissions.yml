@@ -4,5 +4,5 @@
 permissions:
   - user_name: stuart.libby@databricks.com
     level: CAN_MANAGE
-  - service_principal_name: 73529182-20d0-493e-8756-af723ba9b153
+  - service_principal_name: 7ffb1711-f33c-4b75-894b-e550467b65dc
     level: CAN_MANAGE

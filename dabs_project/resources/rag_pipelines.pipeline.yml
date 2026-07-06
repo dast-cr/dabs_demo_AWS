@@ -1,0 +1,14 @@
+resources:
+  pipelines:
+    rag_pipelines:
+      name: Rag Pipelines
+      libraries:
+        - glob:
+            include: ../src/rag_pipelines/transformations/**
+      catalog: classic_stable_aiy0te
+      channel: CURRENT
+      continuous: false
+      photon: true
+      root_path: ../src/rag_pipelines
+      schema: default
+      serverless: true
